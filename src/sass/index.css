@@ -1,0 +1,40 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100dvh;
+  background: rgb(238, 174, 202);
+  background: linear-gradient(174deg, rgb(238, 174, 202) 0%, rgb(148, 187, 233) 100%);
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  width: 100%;
+}
+
+.info {
+  outline: 1px solid red;
+}
+.info__link {
+  display: inline-block;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}/*# sourceMappingURL=index.css.map */

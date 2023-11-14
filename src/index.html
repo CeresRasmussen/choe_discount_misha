@@ -3,39 +3,140 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
+    <title>Chernivtsioblenergo discount</title>
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
-    <form class="search-form" id="search-form">
-      <input
-        type="text"
-        name="searchQuery"
-        autocomplete="off"
-        placeholder="Search images..."
-        class="search-form__input"
-      />
-      <button type="submit" class="search-form__btn">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 50 50"
-          width="24px"
-          height="24px"
+    <section class="container partners">
+      <h1 class="partners__title">Знижка працівника АТ “Чернівціобленерго”</h1>
+      <ul class="partners__list">
+        <li>
+          <a href="#toko" class="partners__link"
+            ><img src="./images/toko_logo.jpg" width="50" alt="TOKO logo"
+          /></a>
+        </li>
+        <li>
+          <a href="#adv" class="partners__link"
+            ><img src="./images/adv_logo.jpg" width="50" alt="ADV logo"
+          /></a>
+        </li>
+        <li>
+          <a href="#gorgany" class="partners__link"
+            ><img src="./images/gorgany_logo.jpg" width="50" alt="Gorgany logo"
+          /></a>
+        </li>
+        <li>
+          <a href="#" class="partners__link"
+            ><img src="./images/coming_soon.jpg" width="50" alt="Coming soon"
+          /></a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="container info" id="toko">
+      <div class="info__main">
+        <a
+          class="info__link"
+          target="_blank"
+          rel="nofollow noreferrer noopener"
+          href="https://toko.com.ua/"
+          ><img src="./images/toko_logo.jpg" width="50" alt="TOKO logo" />
+        </a>
+        <h3 class="info__title">
+          Магазин ТОКО вразить кожного різноманітністю гаджетів та аксесуарів
+        </h3>
+      </div>
+      <p>
+        Для працівника АТ “Чернівціобленерго” магазин гарантує знижки за
+        промокодом <strong class="info__promocode">"oblenergo"</strong> на:
+      </p>
+      <ul>
+        <li>Скло - 50%</li>
+        <li>Чохли - 30%</li>
+        <li>Навушники - 20%</li>
+        <li>Телефони від 200грн до 1000грн*</li>
+      </ul>
+      <p>Магазин знаходиться за адресами:</p>
+      <ul>
+        <li>м. Чернівці, МТК Калинівський ринок, маг. 10М</li>
+        <li>м. Чернівці, просп. Незалежності, 129Д, маг.22</li>
+        <li>м. Чернівці, Небесної Сотні, 12</li>
+      </ul>
+
+      <p class="info__note">* - знижка залежить від моделі смартфону</p>
+    </section>
+
+    <section class="container info" id="adv">
+      <div class="info__main">
+        <a
+          class="info__link"
+          target="_blank"
+          rel="nofollow noreferrer noopener"
+          href="https://advstore.lt/en-uk"
+          ><img src="./images/adv_logo.jpg" width="50" alt="ADV logo" />
+        </a>
+
+        <h3 class="info__title">
+          @dv - один крок до пригод, магазин оригінального брендованого взуття
+        </h3>
+      </div>
+
+      <p>
+        Для працівника АТ “Чернівціобленерго” магазин гарантує знижки за
+        промокодом <strong class="info__promocode">"miwasik"</strong> на:
+      </p>
+      <ul>
+        <li>20% - на весь асортимент</li>
+      </ul>
+      <p>
+        Замовити можна на сайті:
+        <a
+          class="info__promocode"
+          target="_blank"
+          rel="nofollow noreferrer noopener"
+          href="https://advstore.lt/uk-uk"
+          >https://advstore.lt/uk-uk</a
         >
-          <path
-            d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z"
-          />
-        </svg>
-      </button>
-    </form>
+      </p>
+    </section>
 
-    <section class="gallery"></section>
-    <div class="load-more"></div>
-
+    <section class="container info" id="gorgany">
+      <div class="info__main">
+        <a
+          class="info__link"
+          target="_blank"
+          rel="nofollow noreferrer noopener"
+          href="https://www.gorgany.com/"
+          ><img src="./images/gorgany_logo.jpg" width="50" alt="Gorgany logo" />
+        </a>
+        <h3 class="info__title">
+          Магазин Gorgany експерт туристичного спорядження
+        </h3>
+      </div>
+      <p>
+        Для працівника АТ “Чернівціобленерго” магазин гарантує знижки за
+        промокодом
+        <strong class="info__promocode">"mountaine.che"</strong>:
+      </p>
+      <ul>
+        <li>10% - на всі товари</li>
+      </ul>
+      <p>Магазин знаходиться за адресою.:</p>
+      <ul>
+        <li>вулиця Небесної сотні, 23, Чернівці</li>
+      </ul>
+      <p>
+        Або замовляй на сайті:
+        <a
+          class="info__promocode"
+          target="_blank"
+          rel="nofollow noreferrer noopener"
+          href="https://www.gorgany.com/"
+          >https://www.gorgany.com/</a
+        >
+      </p>
+    </section>
     <script type="module" src="./index.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js"
-      integrity
-    ></script>
   </body>
 </html>
