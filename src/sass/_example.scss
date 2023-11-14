@@ -45,7 +45,7 @@ img {
 
 .partners {
   margin-bottom: 25px;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid coral;
   &__title {
     text-align: center;
   }
@@ -64,17 +64,25 @@ img {
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid black;
+    transition: transform 250ms linear;
 
     @media screen and (max-width: 768px) {
       width: 100px;
       height: 100px;
     }
   }
+
+  &__link:has(:hover, :focus) {
+    transform: scale(1.1);
+  }
 }
 
 .info {
   margin-top: 25px;
   // outline: 1px solid red;
+  border-bottom: 2px solid coral;
+  padding-bottom: 20px;
+
   &__main {
     display: flex;
     // flex-wrap: wrap;
@@ -100,11 +108,23 @@ img {
     width: 50px;
     border-radius: 50%;
     overflow: hidden;
+    transition: transform 250ms linear;
   }
+  &__link:has(:hover, :focus) {
+    transform: scale(1.1);
+  }
+
   &__promocode {
     color: coral;
     font-weight: 600;
+    transition: color 250ms linear;
   }
+
+  &__promocode:hover,
+  &__promocode:focus {
+    color: rgb(255, 77, 38);
+  }
+
   &__note {
     font-size: 12px;
   }
