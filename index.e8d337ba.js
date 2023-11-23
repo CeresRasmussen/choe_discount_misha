@@ -1,2 +1,0 @@
-document.addEventListener("DOMContentLoaded",(function(){const n=document.querySelectorAll(".animated");document.addEventListener("scroll",(function(){n.forEach((function(n){(function(n){const t=n.getBoundingClientRect();return t.top>=0&&t.left>=0&&t.top<=(window.innerHeight||document.documentElement.clientHeight)&&t.right<=(window.innerWidth||document.documentElement.clientWidth)})(n)&&(console.log("animatedBlock:",n),n.classList.add("animate"))}))}))}));
-//# sourceMappingURL=index.e8d337ba.js.map
