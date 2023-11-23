@@ -6,11 +6,17 @@
     <title>Chernivtsioblenergo discount</title>
     <link rel="icon" type="image/png" href="./images/favicon.png" />
     <link rel="stylesheet" href="./sass/index.scss" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
   <body>
     <section class="container partners">
-      <h1 class="partners__title">Знижка працівника АТ “Чернівціобленерго”</h1>
-      <ul class="partners__list">
+      <h1 class="partners__title animate__animated animate__fadeInDown">
+        Знижка працівника АТ “Чернівціобленерго”
+      </h1>
+      <ul class="partners__list animate__animated animate__fadeInDown">
         <li>
           <a href="#toko" class="partners__link"
             ><img src="./images/toko_logo.jpg" width="50" alt="TOKO logo"
@@ -34,7 +40,7 @@
       </ul>
     </section>
 
-    <section class="container info" id="toko">
+    <section class="container info animate__animated animate__fadeIn" id="toko">
       <div class="info__main">
         <a class="info__link" href=""
           ><img src="./images/toko_logo.jpg" width="50" alt="TOKO logo" />
@@ -66,15 +72,6 @@
         </li>
         <li>
           <a
-            href="https://maps.app.goo.gl/wx3UrGgA77Kx7j5o7"
-            class="info__promocode"
-            target="_blank"
-            rel="nofollow noreferrer noopener"
-            >м. Чернівці, просп. Незалежності, 129Д, маг.22</a
-          >
-        </li>
-        <li>
-          <a
             href="https://maps.app.goo.gl/ZiTjCdqfWesDaqKL8"
             class="info__promocode"
             target="_blank"
@@ -82,11 +79,23 @@
             >м. Чернівці, Небесної Сотні, 12</a
           >
         </li>
+        <li>
+          м. Чернівці, просп. Незалежності, 129Д, маг.22
+          <span class="info__promocode">(очікується в 2024р.)</span>
+        </li>
+        <!-- <li>
+          <a
+            href="https://maps.app.goo.gl/wx3UrGgA77Kx7j5o7"
+            class="info__promocode"
+            target="_blank"
+            rel="nofollow noreferrer noopener"
+            >м. Чернівці, просп. Незалежності, 129Д, маг.22</a
+          >
+        </li> -->
       </ul>
       <p class="info__note">* - знижка залежить від моделі смартфону</p>
     </section>
-
-    <section class="container info" id="adv-it">
+    <section class="container info animated" id="adv-it">
       <div class="info__main">
         <a
           class="info__link"
@@ -120,7 +129,7 @@
       </p>
     </section>
 
-    <section class="container info" id="gorgany">
+    <section class="container info animated" id="gorgany">
       <div class="info__main">
         <a
           class="info__link"
@@ -164,16 +173,10 @@
           >
         </li>
       </ul>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3250.729964099223!2d25.93812641399149!3d48.262656157106335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473408d2d529dfdf%3A0x1a905cb39314a397!2sGorgany!5e1!3m2!1suk!2sua!4v1700421246857!5m2!1suk!2sua"
-        width="600"
-        height="450"
-        class="google-maps"
-        style="border: 0"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
+    </section>
+
+    <section class="container footer animated">
+      <p>** - надані знижки не сумуються із наявними знижками в магазині.</p>
     </section>
     <script type="module" src="./index.js"></script>
   </body>
