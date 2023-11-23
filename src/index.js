@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
   function handleScroll() {
     animatedBlocks.forEach(function (animatedBlock) {
       if (isElementInViewport(animatedBlock)) {
-        console.log('animatedBlock:', animatedBlock);
         animatedBlock.classList.add('animate');
       }
     });

@@ -143,7 +143,8 @@ img {
 }
 
 .footer {
-  padding: 25px;
+  font-size: 12px;
+  padding-top: 20px;
 }
 // .google-maps {
 //   display: block;
@@ -159,8 +160,8 @@ img {
 }
 .animated {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 2s ease, transform 2s ease;
+  // transform: translateY(20px);
+  transition: opacity 2s ease;
 }
 .animate {
   opacity: 1;
