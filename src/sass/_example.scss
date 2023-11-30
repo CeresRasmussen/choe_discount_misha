@@ -77,7 +77,9 @@ img {
     text-align: center;
   }
   &__list {
-    margin: 25 0 25 0;
+    // margin: 25 0 ;
+    margin: 0;
+    padding: 25 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     // display: flex;
@@ -87,7 +89,10 @@ img {
     padding-left: 0;
 
     @media screen and (max-width: 768px) {
+      // overflow-x: scroll;
+      // justify-content: start;
       grid-template-columns: repeat(2, 1fr);
+      gap: 35px;
     }
   }
   li {
@@ -133,6 +138,12 @@ img {
     padding: 0 50px;
     gap: 25px;
     margin-bottom: 20px;
+    @media screen and (max-width: 480px) {
+      // justify-content: center;
+      // flex-direction: column;
+      // align-items: center;
+      padding: 0 10px;
+    }
 
     @media screen and (max-width: 1024px) {
       justify-content: center;
