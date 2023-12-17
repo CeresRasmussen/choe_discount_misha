@@ -89,7 +89,7 @@ img {
     justify-content: center;
     padding-left: 0;
 
-    @media screen and (min-width: 380px) and (max-width: 768px) {
+    @media screen and (min-width: 380px) and (max-width: 1024px) {
       overflow-x: scroll;
       justify-content: start;
       // grid-template-columns: repeat(2, 1fr);
