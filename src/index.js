@@ -12,14 +12,27 @@ document.addEventListener('DOMContentLoaded', function () {
     );
   }
 
-  function handleScroll() {
+  function handleInitialScroll() {
     animatedBlocks.forEach(function (animatedBlock) {
       if (isElementInViewport(animatedBlock)) {
         animatedBlock.classList.add('animate');
       }
     });
+    // Remove the scroll event listener after the initial check
+    document.removeEventListener('scroll', handleInitialScroll);
   }
-  document.addEventListener('scroll', handleScroll);
+
+  // Add the initial check for elements in viewport
+  handleInitialScroll();
+
+  // Add the scroll event listener for future checks
+  document.addEventListener('scroll', function () {
+    animatedBlocks.forEach(function (animatedBlock) {
+      if (isElementInViewport(animatedBlock)) {
+        animatedBlock.classList.add('animate');
+      }
+    });
+  });
 });
 
 // add up button

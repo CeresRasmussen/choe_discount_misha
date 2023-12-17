@@ -77,21 +77,22 @@ img {
     text-align: center;
   }
   &__list {
-    // margin: 25 0 ;
-    margin: 0;
+    margin: 25 0;
+    // margin: 0;
     padding: 25 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    // display: flex;
-    // flex-wrap: wrap;
+    //для горизонтального скролу закоментувати grid
+    // display: grid;
+    // grid-template-columns: repeat(5, 1fr);
+
+    display: flex;
     gap: 25px;
     justify-content: center;
     padding-left: 0;
 
-    @media screen and (max-width: 768px) {
-      // overflow-x: scroll;
-      // justify-content: start;
-      grid-template-columns: repeat(2, 1fr);
+    @media screen and (min-width: 380px) and (max-width: 768px) {
+      overflow-x: scroll;
+      justify-content: start;
+      // grid-template-columns: repeat(2, 1fr);
       gap: 35px;
     }
   }
@@ -133,34 +134,38 @@ img {
   padding-bottom: 20px;
 
   &__main {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    // display: flex;
+    // flex-direction: row;
     padding: 0 50px;
     gap: 25px;
     margin-bottom: 20px;
     @media screen and (max-width: 480px) {
-      // justify-content: center;
-      // flex-direction: column;
-      // align-items: center;
       padding: 0 10px;
     }
 
-    @media screen and (max-width: 1024px) {
-      justify-content: center;
+    @media screen and (max-width: 768px) {
+      display: flex;
       flex-direction: column;
+      // grid-template-columns: 1fr;
       align-items: center;
+
+      justify-content: center;
     }
   }
   &__title {
     display: inline-block;
     margin: auto 0;
     text-align: center;
+    height: auto;
   }
 
   &__link {
     display: inline-block;
     cursor: pointer;
     width: 75px;
+    height: 75px;
     border-radius: 50%;
     overflow: hidden;
     transition: transform 250ms linear;
