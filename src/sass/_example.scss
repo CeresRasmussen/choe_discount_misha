@@ -20,7 +20,7 @@ body {
   font-weight: 600;
 
   @media screen and (min-width: 900px) {
-    background-size: 90dvh;
+    background-size: 90svh;
   }
 }
 
@@ -78,9 +78,9 @@ img {
   }
   &__list {
     margin: 25 0;
-    // margin: 0;
     padding: 25 0;
     //для горизонтального скролу закоментувати grid
+    // margin: 0;
     // display: grid;
     // grid-template-columns: repeat(5, 1fr);
 
@@ -89,9 +89,10 @@ img {
     justify-content: center;
     padding-left: 0;
 
-    @media screen and (min-width: 380px) and (max-width: 1024px) {
+    @media screen and (max-width: 1024px) {
       overflow-x: scroll;
       justify-content: start;
+      //для горизонтального скролу закоментувати grid
       // grid-template-columns: repeat(2, 1fr);
       gap: 35px;
     }
