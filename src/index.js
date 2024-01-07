@@ -104,11 +104,21 @@ document.addEventListener('DOMContentLoaded', function () {
     messageElement.innerText = 'Промокод скопійовано';
     messageElement.className = 'info__copied-message';
 
-    // Вставити повідомлення на одному рівні з .info__promocode
     element.appendChild(messageElement);
 
+    // Затримка, щоб транзити застосовувалися після вставки елемента в DOM
     setTimeout(function () {
-      element.removeChild(messageElement);
+      messageElement.style.opacity = '1';
+    }, 10);
+
+    // Затримка перед видаленням елемента (задача видалення тепер враховує час анімації)
+    setTimeout(function () {
+      messageElement.style.opacity = '0';
+
+      // Затримка перед видаленням елемента (це вже не setTimeout)
+      setTimeout(function () {
+        element.removeChild(messageElement);
+      }, 300); // Через 0.3 секунди прибрати повідомлення (це час анімації)
     }, 2000); // Через 2 секунди прибрати повідомлення
   }
 });

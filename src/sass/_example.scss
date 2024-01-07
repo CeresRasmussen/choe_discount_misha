@@ -245,7 +245,8 @@ img {
     left: 50%;
     transform: translateX(-50%);
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
 }
 
