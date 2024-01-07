@@ -1,6 +1,5 @@
-// * {
-//   outline: 1px solid red;
-// }
+* {
+}
 html {
   scroll-behavior: smooth;
   background: linear-gradient(90deg, rgb(21, 21, 29) 0%, rgb(25, 23, 58) 100%);
@@ -143,6 +142,7 @@ img {
   padding-bottom: 20px;
 
   &__main {
+    position: relative;
     display: grid;
     grid-template-columns: 75px 1fr;
     // display: flex;
@@ -171,6 +171,7 @@ img {
   }
 
   &__link {
+    position: relative;
     display: inline-block;
     cursor: pointer;
     width: 75px;
@@ -179,23 +180,72 @@ img {
     overflow: hidden;
     transition: transform 250ms linear;
   }
+
   &__link:has(:hover, :focus) {
     transform: scale(1.1);
   }
 
-  &__promocode {
+  &__tooltip {
+    width: clamp(60px, 75%, 200px);
+    position: absolute;
+    background-color: #333;
+    color: coral;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 3;
+    bottom: 90%;
+    left: 20%;
+    transform: translateX(-50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+
+    @media screen and (max-width: 768px) {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(0);
+    }
+  }
+
+  &__link:has(:hover, :focus, :focus-within) + &__tooltip {
+    opacity: 1;
+  }
+
+  &__promocode,
+  &__orange {
+    position: relative;
     color: coral;
     font-weight: 600;
     transition: color 250ms linear;
   }
+  &__promocode {
+    cursor: pointer;
+  }
 
   &__promocode:hover,
-  &__promocode:focus {
+  &__promocode:focus,
+  &__orange:hover,
+  &__orange:focus {
     color: rgb(255, 77, 38);
   }
 
   &__note {
     font-size: 12px;
+  }
+
+  &__copied-message {
+    text-align: center;
+    position: absolute;
+    background-color: #333;
+    color: coral;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 3;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
   }
 }
 

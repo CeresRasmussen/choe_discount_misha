@@ -79,3 +79,36 @@ const btnUp = {
 };
 
 const result = btnUp.addEventListener();
+
+document.addEventListener('DOMContentLoaded', function () {
+  const promocodeElements = document.querySelectorAll('.info__promocode');
+
+  promocodeElements.forEach(function (element) {
+    element.addEventListener('click', function () {
+      copyToClipboard(element.innerText);
+      showCopiedMessage(element);
+    });
+  });
+
+  function copyToClipboard(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+  }
+
+  function showCopiedMessage(element) {
+    const messageElement = document.createElement('span');
+    messageElement.innerText = 'Промокод скопійовано';
+    messageElement.className = 'info__copied-message';
+
+    // Вставити повідомлення на одному рівні з .info__promocode
+    element.appendChild(messageElement);
+
+    setTimeout(function () {
+      element.removeChild(messageElement);
+    }, 2000); // Через 2 секунди прибрати повідомлення
+  }
+});
