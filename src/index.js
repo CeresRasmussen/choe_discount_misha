@@ -140,31 +140,32 @@ document.addEventListener('DOMContentLoaded', function () {
 //     document.body.classList.toggle('modal-open');
 //   }
 // })();
-(() => {
-  const refs = {
-    openModalBtn: document.querySelector('[data-modal-open]'),
-    closeModalBtn: document.querySelector('[data-modal-close]'),
-    modal: document.querySelector('[data-modal]'),
-    backdrop: document.querySelector('.backdrop'),
-  };
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
-  refs.closeModalBtn.addEventListener('click', toggleModal);
-  refs.backdrop.addEventListener('click', handleBackdropClick);
-  refs.modal.addEventListener('click', handleModalClick);
+// (() => {
+//   const refs = {
+//     openModalBtn: document.querySelector('[data-modal-open]'),
+//     closeModalBtn: document.querySelector('[data-modal-close]'),
+//     modal: document.querySelector('[data-modal]'),
+//     backdrop: document.querySelector('.backdrop'),
+//   };
 
-  function toggleModal() {
-    refs.modal.classList.toggle('is-hidden');
-    document.body.classList.toggle('modal-open');
-  }
+//   refs.openModalBtn.addEventListener('click', toggleModal);
+//   refs.closeModalBtn.addEventListener('click', toggleModal);
+//   refs.backdrop.addEventListener('click', handleBackdropClick);
+//   refs.modal.addEventListener('click', handleModalClick);
 
-  function handleBackdropClick(event) {
-    if (event.target === event.currentTarget) {
-      toggleModal();
-    }
-  }
+//   function toggleModal() {
+//     refs.modal.classList.toggle('is-hidden');
+//     document.body.classList.toggle('modal-open');
+//   }
 
-  function handleModalClick(event) {
-    event.stopPropagation(); // Зупинка подальшого розповсюдження події
-  }
-})();
+//   function handleBackdropClick(event) {
+//     if (event.target === event.currentTarget) {
+//       toggleModal();
+//     }
+//   }
+
+//   function handleModalClick(event) {
+//     event.stopPropagation(); // Зупинка подальшого розповсюдження події
+//   }
+// })();
