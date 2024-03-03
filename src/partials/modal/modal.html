@@ -1,0 +1,71 @@
+<!-- <div class="Overlay">
+  <div class="modal">
+    <form class="form">
+      <p class="form-title">Edit contact</p>
+      <div class="input-container">
+        <label for="name" class="label">
+          Name
+          <input type="text" name="name" placeholder="Enter email" />
+        </label>
+      </div>
+      <div class="input-container">
+        <label class="label" for="comment"
+          >Коментар
+          <textarea
+            class="modal__textarea"
+            name="comment"
+            id="comment"
+            rows="6"
+            placeholder="Введіть текст"
+          ></textarea>
+        </label>
+        <label htmlFor="number" class="label">
+          Number
+          <input type="tel" name="number" placeholder="Enter password" />
+        </label>
+      </div>
+      <button type="submit" class="submit">Change</button>
+      <button class="close" type="button" name="close">x</button>
+    </form>
+  </div>
+</div> -->
+<div class="backdrop is-hidden" data-modal>
+  <div class="modal">
+    <button
+      type="button"
+      class="modal__close-button"
+      aria-label="Закрити"
+      data-modal-close
+    >
+      X
+    </button>
+
+    <form class="modal__form-field">
+      <p class="modal__title">Залиште свої пропозиції, щодо роботи компанії</p>
+      <label class="modal__label"
+        >Ім'я
+        <span class="modal__input-form">
+          <input
+            class="modal__input"
+            type="text"
+            name="name"
+            placeholder="Або залишайтеся анонімним 😊"
+            autofocus
+          />
+        </span>
+      </label>
+      <label class="modal__comment" for="comment"
+        >Коментар
+        <textarea
+          class="modal__textarea"
+          name="comment"
+          id="comment"
+          rows="6"
+          placeholder="Введіть текст"
+        ></textarea>
+      </label>
+
+      <button class="modal__send-button" type="submit">Відправити</button>
+    </form>
+  </div>
+</div>
