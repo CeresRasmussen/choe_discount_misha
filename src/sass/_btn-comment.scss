@@ -2,9 +2,8 @@
   position: fixed;
   background-color: transparent;
   right: 20px;
-  bottom: 50px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  bottom: 60px;
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -13,10 +12,12 @@
   width: 60px;
   height: 50px;
   opacity: 1;
-
+  animation: wave 2s infinite linear;
   &:hover {
+    // background-color: #2d1fca;
     background-color: #2d1fca;
   }
+
   .icon {
     display: inline-block;
     width: 2em;
@@ -24,5 +25,40 @@
     stroke-width: 0;
     stroke: currentColor;
     fill: currentColor;
+  }
+  &__icon {
+    animation: color 2s infinite linear;
+  }
+}
+@keyframes wave {
+  0% {
+    bottom: 60px;
+  }
+  33% {
+    bottom: 70px;
+  }
+  66% {
+    bottom: 50px;
+  }
+  100% {
+    bottom: 60px;
+  }
+}
+@keyframes color {
+  0% {
+    fill: currentColor;
+  }
+  33% {
+    fill: rgb(
+      219,
+      128,
+      95
+    ); /* Піднімаємо кнопку на 10 пікселів на середині анімації */
+  }
+  66% {
+    fill: coral; /* Повертаємо кнопку до початкової позиції */
+  }
+  100% {
+    fill: currentColor; /* Повертаємо кнопку до початкової позиції */
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "parcel-project-template",
+  "name": "choe_discount_misha",
   "version": "2.0.0",
   "description": "",
   "homepage": "https://CeresRasmussen.github.io/choe_discount_misha",
@@ -9,21 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
-  },
-  "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "git+https://github.com/CeresRasmussen/choe_discount_misha"
   },
   "dependencies": {
     "animate.css": "^4.1.1",
-    "axios": "1.0.0",
+    "axios": "^1.0.0",
     "infinite-scroll": "^4.0.1",
     "modern-normalize": "^1.1.0",
-    "notiflix": "^3.2.6",
-    "simplelightbox": "^2.12.1"
+    "notiflix": "^3.2.7"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",

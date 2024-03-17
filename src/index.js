@@ -1,4 +1,47 @@
+import Notiflix from 'notiflix';
+import axios from 'axios';
+
+Notiflix.Notify.init({
+  width: '280px',
+  position: 'right-top',
+  distance: '10px',
+  opacity: 1,
+  borderRadius: '5px',
+  rtl: false,
+  timeout: 3000,
+  messageMaxLength: 110,
+  backOverlay: false,
+  backOverlayColor: 'rgba(38,192,211,0.8)',
+  plainText: true,
+  showOnlyTheLastOne: false,
+  clickToClose: false,
+  pauseOnHover: true,
+  ID: 'NotiflixNotify',
+  className: 'notiflix-notify',
+  zindex: 4001,
+  fontFamily: 'Quicksand',
+  fontSize: '13px',
+  cssAnimation: true,
+  cssAnimationDuration: 400,
+  cssAnimationStyle: 'fade',
+  closeButton: false,
+  useIcon: true,
+  useFontAwesome: false,
+  fontAwesomeIconStyle: 'basic',
+  fontAwesomeIconSize: '34px',
+  success: {
+    background: '#26c0d3',
+    textColor: '#fff',
+    childClassName: 'notiflix-notify-success',
+    notiflixIconColor: 'rgba(0,0,0,0.2)',
+    fontAwesomeClassName: 'fas fa-check-circle',
+    fontAwesomeIconColor: 'rgba(0,0,0,0.2)',
+    backOverlayColor: 'rgba(38,192,211,0.8)',
+  },
+});
+
 document.addEventListener('DOMContentLoaded', function () {
+  // // Анімація елементів при прокрутці сторінки
   const animatedBlocks = document.querySelectorAll('.animated');
 
   function isElementInViewport(el) {
@@ -18,14 +61,11 @@ document.addEventListener('DOMContentLoaded', function () {
         animatedBlock.classList.add('animate');
       }
     });
-    // Remove the scroll event listener after the initial check
     document.removeEventListener('scroll', handleInitialScroll);
   }
 
-  // Add the initial check for elements in viewport
   handleInitialScroll();
 
-  // Add the scroll event listener for future checks
   document.addEventListener('scroll', function () {
     animatedBlocks.forEach(function (animatedBlock) {
       if (isElementInViewport(animatedBlock)) {
@@ -33,62 +73,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
-});
 
-// add up button
-
-const btnUp = {
-  el: document.querySelector('.btn-up'),
-  scrolling: false,
-  show() {
-    if (this.el.classList.contains('btn-up_hide')) {
-      this.el.classList.remove('btn-up_hide');
-    }
-  },
-  hide() {
-    if (!this.el.classList.contains('btn-up_hide')) {
-      this.el.classList.add('btn-up_hide');
-    }
-  },
-  addEventListener() {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      if (this.scrolling && scrollY > 0) {
-        return;
-      }
-      this.scrolling = false;
-
-      if (scrollY > 300) {
-        this.show();
-      } else {
-        this.hide();
-      }
-    });
-
-    document.querySelector('.btn-up').onclick = () => {
-      this.scrolling = true;
-      this.hide();
-
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      });
-    };
-  },
-};
-
-const result = btnUp.addEventListener();
-
-document.addEventListener('DOMContentLoaded', function () {
+  // // Копіювання тексту при кліку на елементи з промокодом і відображення повідомлення про копіювання
   const promocodeElements = document.querySelectorAll('.info__promocode');
-
-  promocodeElements.forEach(function (element) {
-    element.addEventListener('click', function () {
-      copyToClipboard(element.innerText);
-      showCopiedMessage(element);
-    });
-  });
 
   function copyToClipboard(text) {
     const textarea = document.createElement('textarea');
@@ -106,66 +93,85 @@ document.addEventListener('DOMContentLoaded', function () {
 
     element.appendChild(messageElement);
 
-    // Затримка, щоб транзити застосовувалися після вставки елемента в DOM
     setTimeout(function () {
       messageElement.style.opacity = '1';
     }, 10);
 
-    // Затримка перед видаленням елемента (задача видалення тепер враховує час анімації)
     setTimeout(function () {
       messageElement.style.opacity = '0';
 
-      // Затримка перед видаленням елемента (це вже не setTimeout)
       setTimeout(function () {
         element.removeChild(messageElement);
-      }, 300); // Через 0.3 секунди прибрати повідомлення (це час анімації)
-    }, 2000); // Через 2 секунди прибрати повідомлення
+      }, 300);
+    }, 2000);
   }
+
+  promocodeElements.forEach(function (element) {
+    element.addEventListener('click', function () {
+      copyToClipboard(element.innerText);
+      showCopiedMessage(element);
+    });
+  });
+
+  // Робота з модальним вікном
+  const openModalBtn = document.querySelector('[data-modal-open]');
+  const closeModalBtn = document.querySelector('[data-modal-close]');
+  const modal = document.querySelector('[data-modal]');
+  const backdrop = document.querySelector('.backdrop');
+  const form = document.querySelector('.modal__form-field');
+
+  function toggleModal() {
+    modal.classList.toggle('is-hidden');
+    document.body.classList.toggle('modal-open');
+  }
+
+  function handleBackdropClick(event) {
+    if (event.target === backdrop) {
+      toggleModal();
+    }
+  }
+
+  function handleModalClick(event) {
+    event.stopPropagation();
+  }
+
+  async function onSubmit(e) {
+    e.preventDefault();
+    const name = form.querySelector('.modal__input').value;
+    const comment = form.querySelector('.modal__textarea').value;
+
+    try {
+      const response = await axios.post(
+        'https://choe-misha-discont-backend.onrender.com/sendEmail',
+        { name, comment },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (response.status === 201) {
+        Notiflix.Notify.success('Дякуємо за ваш коментар!');
+        clearFormFields();
+      } else {
+        Notiflix.Notify.failure('Повідомлення не надіслано!');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+
+    toggleModal();
+  }
+
+  function clearFormFields() {
+    form.querySelector('.modal__input').value = '';
+    form.querySelector('.modal__textarea').value = '';
+  }
+
+  openModalBtn.addEventListener('click', toggleModal);
+  closeModalBtn.addEventListener('click', toggleModal);
+  backdrop.addEventListener('click', handleBackdropClick);
+  modal.addEventListener('click', handleModalClick);
+  form.addEventListener('submit', onSubmit);
 });
-
-// (() => {
-//   const refs = {
-//     openModalBtn: document.querySelector('[data-modal-open]'),
-//     closeModalBtn: document.querySelector('[data-modal-close]'),
-//     modal: document.querySelector('[data-modal]'),
-//     backdrop: document.querySelector('.backdrop'),
-//   };
-
-//   refs.openModalBtn.addEventListener('click', toggleModal);
-//   refs.closeModalBtn.addEventListener('click', toggleModal);
-//   refs.backdrop.addEventListener('click', toggleModal);
-
-//   function toggleModal() {
-//     refs.modal.classList.toggle('is-hidden');
-//     document.body.classList.toggle('modal-open');
-//   }
-// })();
-
-// (() => {
-//   const refs = {
-//     openModalBtn: document.querySelector('[data-modal-open]'),
-//     closeModalBtn: document.querySelector('[data-modal-close]'),
-//     modal: document.querySelector('[data-modal]'),
-//     backdrop: document.querySelector('.backdrop'),
-//   };
-
-//   refs.openModalBtn.addEventListener('click', toggleModal);
-//   refs.closeModalBtn.addEventListener('click', toggleModal);
-//   refs.backdrop.addEventListener('click', handleBackdropClick);
-//   refs.modal.addEventListener('click', handleModalClick);
-
-//   function toggleModal() {
-//     refs.modal.classList.toggle('is-hidden');
-//     document.body.classList.toggle('modal-open');
-//   }
-
-//   function handleBackdropClick(event) {
-//     if (event.target === event.currentTarget) {
-//       toggleModal();
-//     }
-//   }
-
-//   function handleModalClick(event) {
-//     event.stopPropagation(); // Зупинка подальшого розповсюдження події
-//   }
-// })();
