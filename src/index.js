@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import axios from 'axios';
 
 Notiflix.Notify.init({
@@ -74,6 +75,32 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // Показ або приховання кнопки "Повернутися до початку"
+  const btnUp = document.querySelector('.btn-up');
+
+  function handleScroll() {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    if (scrollY > 300) {
+      btnUp.classList.remove('btn-up_hide');
+    } else {
+      btnUp.classList.add('btn-up_hide');
+    }
+  }
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
+
+  window.addEventListener('scroll', handleScroll);
+  btnUp.addEventListener('click', function () {
+    scrollToTop();
+    btnUp.classList.add('btn-up_hide');
+  });
+
   // // Копіювання тексту при кліку на елементи з промокодом і відображення повідомлення про копіювання
   const promocodeElements = document.querySelectorAll('.info__promocode');
 
@@ -141,8 +168,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const comment = form.querySelector('.modal__textarea').value;
 
     try {
+      Loading.dots('Пакуємо Ваш коментар та відправляємо...', {
+        svgColor: 'coral',
+      });
       const response = await axios.post(
         'https://choe-misha-discont-backend.onrender.com/sendEmail',
+        // 'http://localhost:3000/',
         { name, comment },
         {
           headers: {
@@ -152,9 +183,11 @@ document.addEventListener('DOMContentLoaded', function () {
       );
 
       if (response.status === 201) {
+        Loading.remove();
         Notiflix.Notify.success('Дякуємо за ваш коментар!');
         clearFormFields();
       } else {
+        Loading.remove();
         Notiflix.Notify.failure('Повідомлення не надіслано!');
       }
     } catch (error) {
