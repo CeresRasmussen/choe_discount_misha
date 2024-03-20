@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const comment = form.querySelector('.modal__textarea').value;
 
     try {
-      Loading.dots('Пакуємо Ваш коментар та відправляємо...', {
+      Loading.dots('Пакуємо Ваш коментар...', {
         svgColor: 'coral',
       });
       const response = await axios.post(
