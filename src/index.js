@@ -171,9 +171,14 @@ document.addEventListener('DOMContentLoaded', function () {
       Loading.dots('Пакуємо Ваш коментар...', {
         svgColor: 'coral',
       });
+      setTimeout(() => {
+        Loading.remove();
+        Notiflix.Notify.success('Дякуємо за ваш коментар!');
+        toggleModal();
+      }, 1000);
       const response = await axios.post(
         'https://choe-misha-discont-backend.onrender.com/sendEmail',
-        // 'http://localhost:3000/',
+        // 'http://localhost:3000/sendEmail',
         { name, comment },
         {
           headers: {
@@ -183,18 +188,16 @@ document.addEventListener('DOMContentLoaded', function () {
       );
 
       if (response.status === 201) {
-        Loading.remove();
-        Notiflix.Notify.success('Дякуємо за ваш коментар!');
+        // Notiflix.Notify.success('Дякуємо за ваш коментар!');
+        console.log('Дякуємо за ваш коментар!');
         clearFormFields();
       } else {
-        Loading.remove();
-        Notiflix.Notify.failure('Повідомлення не надіслано!');
+        // Notiflix.Notify.failure('Повідомлення не надіслано!');
+        console.log('Повідомлення не надіслано!');
       }
     } catch (error) {
       console.error('Error sending email:', error);
     }
-
-    toggleModal();
   }
 
   function clearFormFields() {
