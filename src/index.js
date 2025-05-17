@@ -168,14 +168,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const comment = form.querySelector('.modal__textarea').value;
 
     try {
-      Loading.dots('Пакуємо Ваш коментар...', { svgColor: 'coral' });
+      // Loading.dots('Пакуємо Ваш коментар...', { svgColor: 'coral' });
 
       // Пробуджуємо бекенд
       await axios.get(
         'https://choe-misha-discont-backend.onrender.com/ping'
         // 'http://localhost:3000/ping'
       );
-      Loading.remove();
+      // Loading.remove();
       toggleModal();
       clearFormFields();
       Notiflix.Notify.success('Дякуємо за ваш коментар!');
