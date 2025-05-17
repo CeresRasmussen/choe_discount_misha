@@ -168,14 +168,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const comment = form.querySelector('.modal__textarea').value;
 
     try {
-      Loading.dots('Пакуємо Ваш коментар...', {
-        svgColor: 'coral',
-      });
-      setTimeout(() => {
-        Loading.remove();
-        Notiflix.Notify.success('Дякуємо за ваш коментар!');
-        toggleModal();
-      }, 1000);
+      Loading.dots('Пакуємо Ваш коментар...', { svgColor: 'coral' });
+
+      // Пробуджуємо бекенд
+      await axios.get(
+        'https://choe-misha-discont-backend.onrender.com/ping'
+        // 'http://localhost:3000/ping'
+      );
+
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      Loading.remove();
       const response = await axios.post(
         'https://choe-misha-discont-backend.onrender.com/sendEmail',
         // 'http://localhost:3000/sendEmail',
@@ -188,17 +190,55 @@ document.addEventListener('DOMContentLoaded', function () {
       );
 
       if (response.status === 201) {
-        // Notiflix.Notify.success('Дякуємо за ваш коментар!');
-        console.log('Дякуємо за ваш коментар!');
+        Notiflix.Notify.success('Дякуємо за ваш коментар!');
+        toggleModal();
         clearFormFields();
       } else {
-        // Notiflix.Notify.failure('Повідомлення не надіслано!');
-        console.log('Повідомлення не надіслано!');
+        Notiflix.Notify.failure('Повідомлення не надіслано!');
       }
     } catch (error) {
-      console.error('Error sending email:', error);
+      Loading.remove();
+      console.error('Помилка при надсиланні:', error);
+      Notiflix.Notify.failure('Сталася помилка при надсиланні.');
     }
   }
+  // async function onSubmit(e) {
+  //   e.preventDefault();
+  //   const name = form.querySelector('.modal__input').value;
+  //   const comment = form.querySelector('.modal__textarea').value;
+
+  //   try {
+  //     Loading.dots('Пакуємо Ваш коментар...', {
+  //       svgColor: 'coral',
+  //     });
+  //     setTimeout(() => {
+  //       Loading.remove();
+  //       Notiflix.Notify.success('Дякуємо за ваш коментар!');
+  //       toggleModal();
+  //     }, 1000);
+  //     const response = await axios.post(
+  //       'https://choe-misha-discont-backend.onrender.com/sendEmail',
+  //       // 'http://localhost:3000/sendEmail',
+  //       { name, comment },
+  //       {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //       }
+  //     );
+
+  //     if (response.status === 201) {
+  //       // Notiflix.Notify.success('Дякуємо за ваш коментар!');
+  //       console.log('Дякуємо за ваш коментар!');
+  //       clearFormFields();
+  //     } else {
+  //       // Notiflix.Notify.failure('Повідомлення не надіслано!');
+  //       console.log('Повідомлення не надіслано!');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error sending email:', error);
+  //   }
+  // }
 
   function clearFormFields() {
     form.querySelector('.modal__input').value = '';
