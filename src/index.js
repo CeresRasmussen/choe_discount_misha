@@ -140,6 +140,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // Прокрутка по якорю з центруванням
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      const targetEl = document.querySelector(targetId);
+
+      if (targetEl) {
+        e.preventDefault();
+        targetEl.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'nearest'
+        });
+      }
+    });
+  });
+
   // Робота з модальним вікном
   const openModalBtn = document.querySelector('[data-modal-open]');
   const closeModalBtn = document.querySelector('[data-modal-close]');
