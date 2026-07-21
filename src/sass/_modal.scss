@@ -37,7 +37,7 @@ body.modal-open {
   background: rgba(16, 13, 32, 0.97);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65),
-    0 0 0 1px rgba(255, 105, 68, 0.1);
+    0 0 0 1px rgba(201, 154, 0, 0.1);
   border-radius: 16px;
   z-index: 2;
   transform: translate(-50%) scale(1);
@@ -68,8 +68,8 @@ body.modal-open {
 
     &:hover,
     &:focus {
-      background: rgba(255, 105, 68, 0.15);
-      border-color: rgba(255, 105, 68, 0.4);
+      background: rgba(201, 154, 0, 0.15);
+      border-color: rgba(201, 154, 0, 0.4);
       color: var(--accent);
     }
   }
@@ -155,8 +155,8 @@ body.modal-open {
   &__input:focus,
   &__textarea:hover,
   &__textarea:focus {
-    border-color: rgba(255, 105, 68, 0.45);
-    background: rgba(255, 105, 68, 0.04);
+    border-color: rgba(201, 154, 0, 0.45);
+    background: rgba(201, 154, 0, 0.04);
   }
 
   &__send-button {
@@ -181,7 +181,7 @@ body.modal-open {
     &:hover,
     &:focus {
       background: var(--accent-hover);
-      box-shadow: 0 4px 18px rgba(255, 105, 68, 0.4);
+      box-shadow: 0 4px 18px rgba(201, 154, 0, 0.4);
       transform: translateY(-1px);
     }
 

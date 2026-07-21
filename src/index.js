@@ -22,11 +22,11 @@ Notiflix.Notify.init({
   closeButton: false,
   useIcon: true,
   success: {
-    background: '#ff6944',
+    background: '#c99a00',
     textColor: '#fff',
     childClassName: 'notiflix-notify-success',
     notiflixIconColor: 'rgba(0,0,0,0.2)',
-    backOverlayColor: 'rgba(255,105,68,0.25)',
+    backOverlayColor: 'rgba(201,154,0,0.25)',
   },
 });
 
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const comment = form.querySelector('.modal__textarea').value;
 
     try {
-      Loading.dots('Пакуємо Ваш коментар...', { svgColor: '#ff6944' });
+      Loading.dots('Пакуємо Ваш коментар...', { svgColor: '#c99a00' });
 
       const response = await axios.post(
         'https://choe-misha-discont-backend.onrender.com/sendEmail',
